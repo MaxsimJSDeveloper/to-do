@@ -26,11 +26,27 @@ function App() {
     setTodos((prevTodos) => [...prevTodos, newTodo]);
   };
 
+  const toggleTodo = (id: string) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === id ? { ...todo, isDone: !todo.isDone } : todo
+      )
+    );
+  };
+
+  const deleteTodo = (id: string) => {
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id != id));
+  };
+
   return (
     <>
       <div className="flex items-center justify-center h-screen bg-gray-900">
         <AddTodosForm addTodo={addTodo} />
-        <TodosList todos={todos} />
+        <TodosList
+          todos={todos}
+          toggleTodo={toggleTodo}
+          deleteTodo={deleteTodo}
+        />
       </div>
     </>
   );
