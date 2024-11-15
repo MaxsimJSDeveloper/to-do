@@ -1,6 +1,6 @@
 import { IoMdClose } from "react-icons/io";
 import { Todo } from "../types/general.types";
-import { useTodos } from "../hooks/useTodos";
+import { useTodos } from "../context/TodosContext";
 
 interface TodoProps {
   todo: Todo;
@@ -25,11 +25,11 @@ const TodoItem = ({ todo }: TodoProps) => {
           name="done"
           onChange={handleChange}
           checked={todo.isDone}
-          className="h-5 w-5"
+          className="h-6 w-6 accent-teal-500 transition-all duration-300 ease-in-out"
         />
         <h2
           className={`text-lg ${
-            todo.isDone ? "line-through text-gray-400" : ""
+            todo.isDone ? "line-through text-gray-400" : "text-white"
           }`}
         >
           {todo.task}
@@ -37,7 +37,7 @@ const TodoItem = ({ todo }: TodoProps) => {
       </div>
       <button
         onClick={handleDelete}
-        className="text-white p-2 bg-red-600 rounded-full hover:bg-red-700 focus:outline-none"
+        className="text-white p-3 bg-red-600 rounded-full hover:bg-red-700 focus:outline-none transition-colors duration-300"
       >
         <IoMdClose />
       </button>
