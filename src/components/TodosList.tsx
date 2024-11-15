@@ -1,10 +1,5 @@
-import Todo from "./Todo";
-
-interface Todo {
-  id: string;
-  task: string;
-  isDone: boolean;
-}
+import { Todo } from "../types/general.types";
+import TodoItem from "./Todo";
 
 interface TodosListProps {
   todos: Todo[];
@@ -14,15 +9,20 @@ interface TodosListProps {
 
 const TodosList = ({ todos, toggleTodo, deleteTodo }: TodosListProps) => {
   return (
-    <>
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>
-            <Todo todo={todo} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
-          </li>
-        ))}
-      </ul>
-    </>
+    <ul className="flex flex-col gap-4 items-center">
+      {todos.map((todo) => (
+        <li
+          key={todo.id}
+          className="w-full flex justify-between items-center bg-teal-600 p-4 rounded-lg shadow-md"
+        >
+          <TodoItem
+            todo={todo}
+            toggleTodo={toggleTodo}
+            deleteTodo={deleteTodo}
+          />
+        </li>
+      ))}
+    </ul>
   );
 };
 

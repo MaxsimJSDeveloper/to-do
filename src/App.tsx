@@ -9,9 +9,9 @@ interface Todos {
 }
 
 const initialTodos: Todos[] = [
-  { id: "1", task: "Apple", isDone: false },
-  { id: "2", task: "Banana", isDone: true },
-  { id: "3", task: "Cherry", isDone: false },
+  { id: "1", task: "Learn JS", isDone: false },
+  { id: "2", task: "Learn React", isDone: true },
+  { id: "3", task: "Learn Node.js", isDone: false },
 ];
 
 function App() {
@@ -35,12 +35,12 @@ function App() {
   };
 
   const deleteTodo = (id: string) => {
-    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id != id));
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
 
   return (
-    <>
-      <div className="flex items-center justify-center h-screen bg-gray-900">
+    <div className="flex justify-center items-center h-screen bg-gray-800 p-4">
+      <div className="max-w-5xl w-full flex flex-col gap-8 bg-teal-700 p-8 rounded-xl shadow-xl">
         <AddTodosForm addTodo={addTodo} />
         <TodosList
           todos={todos}
@@ -48,7 +48,7 @@ function App() {
           deleteTodo={deleteTodo}
         />
       </div>
-    </>
+    </div>
   );
 }
 

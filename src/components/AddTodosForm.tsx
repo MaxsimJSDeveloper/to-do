@@ -11,12 +11,22 @@ const AddTodosForm = ({ addTodo }: AddTodosFormProps) => {
   };
 
   return (
-    <>
-      <form onSubmit={handleAddTodo}>
-        <input name="todo"></input>
-        <button type="submit">Add</button>
-      </form>
-    </>
+    <form
+      className="flex justify-center items-center gap-4 w-full"
+      onSubmit={handleAddTodo}
+    >
+      <input
+        className="w-full max-w-md p-3 rounded-lg border-2 border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-600"
+        name="todo"
+        placeholder="Add a new task"
+      />
+      <button
+        type="submit"
+        className="px-6 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-600"
+      >
+        Add
+      </button>
+    </form>
   );
 };
 
