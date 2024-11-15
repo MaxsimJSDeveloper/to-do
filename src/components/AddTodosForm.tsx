@@ -1,13 +1,16 @@
-interface AddTodosFormProps {
-  addTodo: (task: string) => void;
-}
+import { useState } from "react";
+import { useTodos } from "../hooks/useTodos";
 
-const AddTodosForm = ({ addTodo }: AddTodosFormProps) => {
+const AddTodosForm = () => {
+  const { addTodo } = useTodos();
+  const [newTask, setNewTask] = useState("");
+
   const handleAddTodo = (e: React.FormEvent) => {
     e.preventDefault();
-    const newTodo = (e.target as HTMLFormElement).todo.value;
-    addTodo(newTodo);
-    (e.target as HTMLFormElement).reset();
+    if (newTask) {
+      addTodo(newTask);
+      setNewTask("");
+    }
   };
 
   return (
@@ -17,7 +20,8 @@ const AddTodosForm = ({ addTodo }: AddTodosFormProps) => {
     >
       <input
         className="w-full max-w-md p-3 rounded-lg border-2 border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-600"
-        name="todo"
+        value={newTask}
+        onChange={(e) => setNewTask(e.target.value)}
         placeholder="Add a new task"
       />
       <button

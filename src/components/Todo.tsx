@@ -1,13 +1,14 @@
 import { IoMdClose } from "react-icons/io";
 import { Todo } from "../types/general.types";
+import { useTodos } from "../hooks/useTodos";
 
 interface TodoProps {
   todo: Todo;
-  toggleTodo: (id: string) => void;
-  deleteTodo: (id: string) => void;
 }
 
-const TodoItem = ({ todo, toggleTodo, deleteTodo }: TodoProps) => {
+const TodoItem = ({ todo }: TodoProps) => {
+  const { toggleTodo, deleteTodo } = useTodos();
+
   const handleChange = () => {
     toggleTodo(todo.id);
   };
